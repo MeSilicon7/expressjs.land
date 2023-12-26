@@ -1,0 +1,269 @@
+---
+chapter: 14
+title: Session Management
+shortname: Session
+slug: session-manage
+description: Express Authentication and Session Management
+updatedAt: 2023-07-18T20:39:49.365Z
+---
+import { Callout } from 'nextra/components'
+
+
+# Simple Authentication and Session Management 
+<hr/>
+### What we will learn in this chapter:
+
+In this chapter, we will explore the concept of session management in web development. We'll learn how to handle user sessions on the server side without storing information in the user's browser. Here's a breakdown of what we'll cover:
+
+1. **Managing Sessions on the Server**  
+   We'll start by understanding how to manage sessions on the server, which means keeping track of user data without relying on the user's browser.
+
+2. **Using Non-Encrypted Cookies for Session Management**  
+   Next, we'll delve into the use of non-encrypted cookies for session management. 
+
+3. **Using Encrypted Cookies for Session Management**  
+   Building on our previous knowledge, we'll explore the use of encrypted cookies for more secure session management.
+
+4. **Introduction to JWT (JSON Web Tokens)**  
+   We'll introduce JSON Web Tokens (JWT) and explore how they can be used for session management.
+
+
+5. **RestAPI Authentication with JWT**  
+   We'll learn how to use JWTs to manage user logins and secure routes in RestAPI. 
+
+6. **Responsibilities of Backend and Frontend**  
+   Finally, we'll discuss the responsibilities of both the backend and frontend in session management. In the next chapter [MYSQL Database](/learn/15-mysql-database), we'll take our session management to the next level by incorporating a database for real user data. 
+
+
+<Callout type="warning" emoji="⚠️">
+    Session storage is different from session management. Session storage is a browser feature that allows you to store data in the browser for a single session. This data is cleared when the browser is closed & session management is a server-side process that allows you to keep track of user data without/with relying on the user's browser.
+</Callout>
+
+#### Challenge 1: Managing Sessions on the Server
+<Callout emoji="💡">
+   Basics  knowledge of **set cookies and html form making** required.
+</Callout>
+
+- **Objective**: Implement a user login system with session management in an ExpressJS application.(we will use server side session management)
+
+- **Tasks**:
+  1. **User Object Creation**:
+     - Define a user object to simulate a real-world scenario. This object should include at least a username and password.
+
+  2. **Login Route Setup**:
+     - Create a `/login` route where users can log in using their username and password.
+     - Implement the following login logic:
+       - **Successful Login**:
+         - If the username and password match an existing user, create a session for that user using `express-session`.
+         - Redirect the user to a `/dashboard` page.
+       - **Failed Login**:
+         - If the login details are incorrect, redirect the user back to the `/login` page and display an error message.
+
+  3. **Dashboard Route**:
+     - Create a `/dashboard` route where logged-in users can view their profile.
+     - Implement session verification:
+       - Check if the user has an active session.
+       - If they do, allow access to the `/dashboard`.
+       - If not, redirect them to the `/login` page.
+
+  4. **Logout Route**:
+     - Create a `/logout` route for users to log out.
+     - On logout, destroy the user's session and redirect them to the `/login` page.
+
+**Goal**: Users should be able to log in and view their dashboard only if they have a valid session. They should also be able to log out, which ends their session and redirects them to the login page.
+
+
+<details>
+    <summary> Solution </summary>
+    <p>Todo: Add Solution</p>
+</details>
+
+
+#### Challenge 2: Using Non-Encrypted Cookies for Session Management
+<Callout emoji="💡">
+   Basics  knowledge of **request and response headers** required.
+</Callout>
+<Callout type="info" emoji="💡">
+   Go to Chapter 五, 六 & 七(challenge 6) to learn about request and response headers.
+</Callout>
+
+- **Objective**: Implement a session management system in an ExpressJS application using non-encrypted cookies.
+
+- **Tasks**:
+  1. **User Login and Cookie Creation**:
+     - Set up a login route `/login` where users can log in using their credentials.
+     - Upon successful login, create a cookie named after the user's username using `res.cookie()`. For example, if the username is 'john', the cookie could be named 'john_cookie'.
+  
+  2. **Redirect to Dashboard with Cookie Check**:
+     - After setting the cookie, redirect the user to a `/dashboard` route.
+     - On the dashboard route, check for the presence of the user-specific cookie.
+     - If the cookie exists, grant access to the dashboard. If not, redirect back to the login page.
+
+  3. **Logout Route and Cookie Unsetting**:
+     - Create a logout route `/logout`.
+     - In this route, unset or clear the user-specific cookie.
+     - After unsetting the cookie, redirect the user to the login page.
+
+**Goal**: Users should be able to log in, at which point a non-encrypted cookie specific to their username is created. They should only access the dashboard if this cookie is present. Logging out should remove their specific cookie and redirect them to the login page.
+
+<details>
+   <summary> Solution </summary>
+   <p>Todo: Add Solution</p>
+</details>
+
+#### Challenge 3: Using Encrypted Cookies for Session Management
+<Callout emoji="💡">
+   Basics  knowledge of **request, response headers & encryption** required
+</Callout>
+<Callout type="info" emoji="💡">
+   Go to Chapter **五, 六(challenge 4 + 5) & 七(challenge 6)** to learn about request and response headers.
+</Callout>
+
+- **Objective**: Implement a secure session management system in an ExpressJS application using encrypted cookies.
+
+- **Tasks**:
+  1. **Setup Secure Cookie Handling**:
+     - Install and set up a cookie handling library like `cookie-parser` with an encryption key to ensure the security of your cookies.
+
+  2. **User Login and Encrypted Cookie Creation**:
+     - Create a `/login` route where users authenticate with their credentials.
+     - Upon successful authentication, generate an encrypted cookie. You might use the username combined with a secret key to create this encrypted cookie.
+     - Use `res.cookie()` to send this encrypted cookie to the user's browser.
+
+  3. **Dashboard Access with Encrypted Cookie Verification**:
+     - Create a `/dashboard` route.
+     - In this route, verify the presence and validity of the encrypted cookie.
+     - If the cookie is valid and present, allow access to the dashboard. If not, redirect the user to the login page.
+
+  4. **Logout and Cookie Deletion**:
+     - Implement a `/logout` route.
+     - In this route, delete or clear the encrypted cookie from the user’s browser.
+     - Redirect the user to the login page after cookie deletion.
+
+**Goal**: Users can securely log in and navigate to their dashboard, facilitated by encrypted cookies for session management. Logging out should invalidate and remove these cookies, ensuring secure session termination.
+    
+<details>
+   <summary> Solution </summary>
+   <p>Todo: Add Solution</p>
+</details>
+
+#### Challenge 4: Introduction to JWT (JSON Web Tokens)
+
+**Objective**: Learn how to use JWTs to manage user logins and secure routes in your web application.
+
+**What You'll Do**:
+   1. **Setting Up JWT**:
+      - First, add JWT support to your project. This involves using a library like `jsonwebtoken`.
+      - You'll need a "secret key" for JWT. Think of this like a password that helps make your tokens secure.
+
+   2. **Creating a Login System**:
+      - Make a login page at `/login`. Here, users will enter their username and password.
+      - When someone logs in correctly, your server will create a JWT. This is like a special ticket with their user info, encoded securely using your secret key.
+      - Send this JWT back to the user, maybe in the webpage or as part of the response header.
+
+   3. **Using JWT to Access the Dashboard**:
+      - Now, create a dashboard at `/dashboard`. But, make it so only logged-in users can see it.
+      - Write some code that checks for the JWT when someone tries to visit the dashboard. This code should decode the JWT using your secret key to check if it's valid.
+      - If the user has a valid JWT, they can see the dashboard. If not, send them back to the login page.
+
+   4. **Handling Logout**:
+      - Make a logout button or page at `/logout`.
+      - JWTs are a bit tricky for logging out. Since they are just tokens and not stored on the server, you can't just delete them from the server. Instead, make sure the token gets deleted from the user's browser or app when they log out.
+      - You might also keep track of logged-out tokens on your server to make sure they can't be used again until they expire.
+
+
+<Callout emoji="💡">
+   **TLDR;** Make JWT based on user login information, store it browsers cookies with https only flag. 🍣
+</Callout>
+
+
+**Goal**: By the end of this challenge, you'll have a basic but secure login system. Users will get a JWT when they log in, which they need to access certain pages like the dashboard. When they log out, their JWT gets invalidated or deleted, preventing further access until they log in again.
+
+<details>
+   <summary> Solution </summary>
+   <p>Todo: Add Solution</p>
+</details>
+
+#### Challenge 5: RestAPI Authentication with JWT
+
+- **Objective**: Implement basic authentication for a RESTful API using JWT (JSON Web Tokens) in an ExpressJS application, suitable for beginners.
+
+- **What You'll Do**:
+  1. **Integrate JWT into Your API**:
+     - Add a JWT library (like `jsonwebtoken`) to your project.
+     - Create a secret key for signing your JWTs. This key ensures the security of the tokens.
+
+  2. **User Login Endpoint**:
+     - Set up a `/api/login` route. Users will send their username and password to this endpoint.
+     - If the username and password are correct, generate a JWT that includes the user's details. Return this token in the response.
+     - But It's not backend engineers responsibility to store the token in the browser, it's frontend engineers responsibility to store the token in the browser.
+
+   <Callout emoji="💡">
+      For REST APIs, just sent JWT to the frontend, and then check it on every protected route request. That's pretty much it! 🍣
+   </Callout>
+
+  3. **Securing API Routes with JWT**:
+     - Develop other API routes that require user authentication, for example, `/api/protected`.
+     - Create a middleware that checks for a JWT in the request headers.
+     - This middleware should verify the token with your secret key. If the JWT is valid, the user gets access to the route. If it's invalid, return an error.
+
+  4. **Implementing Logout**:
+     - For logging out, the client should delete or stop sending the JWT. 
+     - Although JWTs cannot be invalidated in the traditional sense, not including the token in requests will effectively prevent access to protected routes.
+     - You can blacklist token on server side when frontend sends specific logout request. Buts it's not recommended.
+
+   <Callout emoji="💡">
+      Frontend engineers will delete the token from the browser when the user logs out. 🍣
+   </Callout>
+
+**Goal**: Build a simple yet secure API where users log in to receive a JWT. This token is then used to access other protected API endpoints. This challenge focuses on the essentials of JWT authentication, making it suitable for beginners.
+
+<details>
+   <summary> Solution </summary>
+   <p>Todo: Add Solution</p>
+</details>
+
+
+#### Challenge 6(Concept): Responsibilities of Backend and Frontend
+
+Authentication and authorization are key components in any web application, and they are usually handled differently by the frontend and backend. Let's break this down:
+
+### Backend Responsibilities
+
+1. **Verifying Credentials**: The backend is responsible for verifying the credentials sent by the frontend. This involves checking the username and password against the database.
+
+2. **Token Generation**: Upon successful authentication, the backend generates a token (like JWT) and sends it back to the frontend.
+
+3. **Managing Sessions**: If using session-based authentication, the backend manages user sessions.
+
+4. **Securing Endpoints**: The backend ensures that certain endpoints are protected and can only be accessed with a valid token.
+
+5. **Token Validation**: Each time a request is made to a protected endpoint, the backend validates the token sent by the frontend.
+
+6. **Role-Based Access Control**: The backend often handles more complex authorization like role-based access control (RBAC), determining what resources a user can access based on their role.
+
+### Frontend Responsibilities
+
+1. **User Interface for Authentication**: The frontend is responsible for providing the user interface for login and registration. This includes forms where users can enter their credentials.
+
+2. **Sending Credentials to Backend**: Once the user inputs their credentials, the frontend sends these to the backend.
+
+3. **Handling Responses**: The frontend handles the responses from the backend. If authentication is successful, the backend will send a token (like a JWT token) or a session ID.
+
+4. **Storing Authentication Tokens**: The frontend stores the authentication token securely, often in the browser's local storage or cookies.
+
+5. **Sending Token for Authorization**: For subsequent requests that require authorization, the frontend includes the authentication token in the request headers.
+
+6. **Handling User Experience Post-Authentication**: The frontend updates the user interface based on the user's authentication status, like showing/hiding certain elements or redirecting to different pages.
+
+### Communication Between Frontend and Backend
+
+- The communication is usually done over HTTP/HTTPS, with the frontend sending requests and the backend sending responses.
+- Secure transmission (like HTTPS) is crucial to prevent interception of sensitive data like credentials.
+
+### Tools and Frameworks
+
+- **Frontend**: Libraries like React can be used for building the UI, and Axios or Fetch API for making HTTP requests.
+- **Backend**: Express.js is a popular choice for handling HTTP requests, and libraries like Passport.js can be used for authentication in Node.js environments.
+
+Remember, while the frontend handles the user interface and initial token storage, the backend is the gatekeeper, ensuring that credentials are verified and access is granted only to authenticated and authorized users.

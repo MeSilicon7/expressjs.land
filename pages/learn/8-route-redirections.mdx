@@ -1,0 +1,37 @@
+---
+chapter: 8
+title: Route Redirection
+shortname: Re-Route
+slug: route-redirection
+description: Implement Route Redirection
+updatedAt: 2023-07-18T20:39:49.365Z
+---
+
+# Route Redirection
+
+#### Challenge 1: Basic Redirection Challenge: 
+   - Set up a route in your ExpressJS application named `/oldpath`. 
+   - Implement functionality so that whenever a user visits `/oldpath`, they are automatically redirected to a different route named `/newpath`.
+    <details>
+        <summary> Solution </summary>
+        <p>Todo: Add Solution</p>
+    </details>
+
+#### Challenge 2: Simple Conditional Redirection
+
+    - **Objective**: Create a small ExpressJS application with special redirection rules.
+
+    - **Steps**:
+    1. **Setup Routes**: Create two main routes - `/start` and `/end`.
+    2. **Cookie Setup on `/start`**: When a user visits `/start`, your application should give them a cookie named `c` with the value `'i love cookie'`. Then, automatically redirect them to a new route `/middle`.
+    3. **Middleware for Cookie Check**:
+        - Write a middleware function that checks for the cookie `c` with the value `'i love cookie'`.
+        - If the cookie is found, the middleware should redirect the user to `/end`.
+    4. **Apply Middleware**: Use this middleware on the `/middle` route to enforce the redirection.
+
+    - **Goal**: Only users who have visited `/start` and received the cookie can access `/end` through the `/middle` route. If someone tries to access `/middle` without the cookie, they should be redirected to `/end`.
+
+    <details>
+        <summary> Solution </summary>
+        <p>Todo: Add Solution</p>
+    </details>

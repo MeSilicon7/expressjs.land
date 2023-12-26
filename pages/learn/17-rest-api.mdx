@@ -1,0 +1,618 @@
+---
+chapter: 17
+title: Restful API - Express
+shortname: Restful API
+slug: restful-api-express
+updatedAt: 2023-07-18T20:39:49.365Z
+---
+
+# Comming Soon
+
+# An Incomplete Guided Challenge Restful API & Backend Development
+from this lesson to next all lesson will be only this project(Most of time). we will develop a bookstore project. we will start with restful api. .... 
+
+## Starting with Restful API
+<hr/> 
+You will find this is one of the most powerful guide for backend development on INTERNET
+
+{/* 
+    Project: Book Store
+    Features: Book management, Order management, Online purchase, User Management, RBAC, Social signin, Built OAuth 2.0 Provider, OpenID Connect Provider, Documentation for Extenstion Development, API Versioning, API Documentation, API Testing, API Security, API Performance, API Scalability, API Monitoring, API Design, 2 Factor Authentication, TOTP, Dockerized, Webhook, Many more
+    
+    
+    
+    
+    
+    
+    API Versioning, API Documentation, API Testing, API Security, API Performance, API Scalability, API Monitoring, API
+
+*/}
+    API Design:
+    {/* I already design api, so you don't need worry. so complete one by one */}
+    {/* Deference between traditional api vs restAPI */}
+
+    ### 1. First Complete All `GET` Request
+
+        1. Get All Books
+        - **Endpoint**: `/api/books`
+        - **Method**: GET
+        - **Description**: Retrieves a list of all books.
+        - **Response**: A list of books with details like title, author, category, price, publish date, and description.
+
+        2. Get Book by ID
+        - **Endpoint**: `/api/books/{book_id}`
+        - **Method**: GET
+        - **Description**: Retrieves details of a specific book by its ID.
+        - **Response**: Book details.
+
+        3. Get All Authors
+        - **Endpoint**: `/api/authors`
+        - **Method**: GET
+        - **Description**: Retrieves a list of all authors.
+        - **Response**: A list of authors with their names and bios.
+
+        4. Get Author by ID
+        - **Endpoint**: `/api/authors/{author_id}`
+        - **Method**: GET
+        - **Description**: Retrieves details of a specific author by their ID.
+        - **Response**: Author details.
+
+        5. Get All Categories
+        - **Endpoint**: `/api/categories`
+        - **Method**: GET
+        - **Description**: Retrieves a list of all categories.
+        - **Response**: A list of categories.
+
+        6. Get Category by ID
+        - **Endpoint**: `/api/categories/{category_id}`
+        - **Method**: GET
+        - **Description**: Retrieves details of a specific category by its ID.
+        - **Response**: Category details.
+
+        7. Get All Users
+        - **Endpoint**: `/api/users`
+        - **Method**: GET
+        - **Description**: Retrieves a list of all users.
+        - **Response**: A list of users with their details.
+
+        8. Get User by ID
+        - **Endpoint**: `/api/users/{user_id}`
+        - **Method**: GET
+        - **Description**: Retrieves details of a specific user by their ID.
+        - **Response**: User details.
+
+        9. Get All Orders
+        - **Endpoint**: `/api/orders`
+        - **Method**: GET
+        - **Description**: Retrieves a list of all orders.
+        - **Response**: A list of orders with details.
+
+        10. Get Order by ID
+        - **Endpoint**: `/api/orders/{order_id}`
+        - **Method**: GET
+        - **Description**: Retrieves details of a specific order by its ID.
+        - **Response**: Order details.
+
+    ### 2. Handle `POST` Request
+    Handling `POST` requests in your eBook store's RESTful API involves creating endpoints that allow clients to add new data to the database. These `POST` requests typically include data in the request body that needs to be processed and stored. Here's how you can set up `POST` endpoints for each of your tables:
+
+        1. Add New Book
+        - **Endpoint**: `/api/books`
+        - **Method**: POST
+        - **Description**: Adds a new book to the store.
+        - **Request Body**: Includes details like title, author_id, category_id, price, publish_date, and description.
+        - **Response**: Confirmation of book addition, possibly with the newly added book's details.
+
+        2. Add New Author
+        - **Endpoint**: `/api/authors`
+        - **Method**: POST
+        - **Description**: Adds a new author.
+        - **Request Body**: Author's name and bio.
+        - **Response**: Confirmation of author addition with details.
+
+        3. Add New Category
+        - **Endpoint**: `/api/categories`
+        - **Method**: POST
+        - **Description**: Adds a new category.
+        - **Request Body**: Category name.
+        - **Response**: Confirmation of category addition with details.
+
+        4. Register New User
+        - **Endpoint**: `/api/users`
+        - **Method**: POST
+        - **Description**: Registers a new user.
+        - **Request Body**: User's name, email, and password (hashed).
+        - **Response**: Confirmation of user registration with user details (excluding password).
+
+        5. Create New Order
+        - **Endpoint**: `/api/orders`
+        - **Method**: POST
+        - **Description**: Places a new order.
+        - **Request Body**: User_id, book_id, order_date, quantity, and total_price.
+        - **Response**: Confirmation of the order with order details.
+
+    ### 3. Handle `PUT` Request
+    Handling `PUT` requests in your eBook store's RESTful API involves creating endpoints that allow clients to update existing data in the database. `PUT` requests typically replace the entire resource or update specific fields of the resource, depending on your implementation. Here's how you can set up `PUT` endpoints for each of your tables:
+
+        1. Update Book Details
+        - **Endpoint**: `/api/books/{book_id}`
+        - **Method**: PUT
+        - **Description**: Updates the details of an existing book.
+        - **Request Body**: New details for the book such as title, author_id, category_id, price, publish_date, and description.
+        - **Response**: Confirmation of the book update, possibly with the updated book's details.
+
+        2. Update Author Details
+        - **Endpoint**: `/api/authors/{author_id}`
+        - **Method**: PUT
+        - **Description**: Updates the details of an existing author.
+        - **Request Body**: Updated author's name and bio.
+        - **Response**: Confirmation of author update with details.
+
+        3. Update Category Details
+        - **Endpoint**: `/api/categories/{category_id}`
+        - **Method**: PUT
+        - **Description**: Updates the details of an existing category.
+        - **Request Body**: Updated category name.
+        - **Response**: Confirmation of category update with details.
+
+        4. Update User Details
+        - **Endpoint**: `/api/users/{user_id}`
+        - **Method**: PUT
+        - **Description**: Updates the details of an existing user.
+        - **Request Body**: Updated user's name, email, and other details (excluding password).
+        - **Response**: Confirmation of user update with user details (excluding password).
+
+        5. Update Order Details
+        - **Endpoint**: `/api/orders/{order_id}`
+        - **Method**: PUT
+        - **Description**: Updates the details of an existing order.
+        - **Request Body**: Updated details like user_id, book_id, order_date, quantity, and total_price.
+        - **Response**: Confirmation of the order update with order details.
+    
+    ### 4. Handle `PATCH` Request 
+    Handling `PATCH` requests in your eBook store's RESTful API involves creating endpoints that allow clients to update partial data in the database. Unlike `PUT` requests which typically replace the entire resource, `PATCH` requests are used for making partial updates to a resource. Here's how you can set up `PATCH` endpoints for each of your tables:
+
+        1. Partially Update Book Details
+        - **Endpoint**: `/api/books/{book_id}`
+        - **Method**: PATCH
+        - **Description**: Partially updates the details of an existing book.
+        - **Request Body**: Only the details to be updated, like title, price, or description.
+        - **Response**: Confirmation of the book update, possibly with the updated book's details.
+
+        2. Partially Update Author Details
+        - **Endpoint**: `/api/authors/{author_id}`
+        - **Method**: PATCH
+        - **Description**: Partially updates the details of an existing author.
+        - **Request Body**: Only the details to be updated, such as author's name or bio.
+        - **Response**: Confirmation of author update with details.
+
+        3. Partially Update Category Details
+        - **Endpoint**: `/api/categories/{category_id}`
+        - **Method**: PATCH
+        - **Description**: Partially updates the details of an existing category.
+        - **Request Body**: Only the updated category name.
+        - **Response**: Confirmation of category update with details.
+
+        4. Partially Update User Details
+        - **Endpoint**: `/api/users/{user_id}`
+        - **Method**: PATCH
+        - **Description**: Partially updates the details of an existing user.
+        - **Request Body**: Only the details to be updated, like user's name or email.
+        - **Response**: Confirmation of user update with user details (excluding password).
+
+        5. Partially Update Order Details
+        - **Endpoint**: `/api/orders/{order_id}`
+        - **Method**: PATCH
+        - **Description**: Partially updates the details of an existing order.
+        - **Request Body**: Only the details to be updated, such as quantity or total_price.
+        - **Response**: Confirmation of the order update with order details.
+
+    ### 5. Handle `DELETE` Request
+    Handling `DELETE` requests in your eBook store's RESTful API involves creating endpoints that allow clients to remove existing data from the database. These endpoints are crucial for maintaining data integrity and allowing users to manage resources effectively. Here's how you can set up `DELETE` endpoints for each of your tables:
+
+        1. Delete a Book
+        - **Endpoint**: `/api/books/{book_id}`
+        - **Method**: DELETE
+        - **Description**: Deletes a specific book from the store.
+        - **Response**: Confirmation of the book deletion, possibly with a status message.
+
+        2. Delete an Author
+        - **Endpoint**: `/api/authors/{author_id}`
+        - **Method**: DELETE
+        - **Description**: Deletes a specific author.
+        - **Response**: Confirmation of author deletion with a status message.
+
+        3. Delete a Category
+        - **Endpoint**: `/api/categories/{category_id}`
+        - **Method**: DELETE
+        - **Description**: Deletes a specific category.
+        - **Response**: Confirmation of category deletion with a status message.
+
+        4. Delete a User
+        - **Endpoint**: `/api/users/{user_id}`
+        - **Method**: DELETE
+        - **Description**: Deletes a specific user.
+        - **Response**: Confirmation of user deletion with a status message.
+
+        5. Delete an Order
+        - **Endpoint**: `/api/orders/{order_id}`
+        - **Method**: DELETE
+        - **Description**: Deletes a specific order.
+        - **Response**: Confirmation of the order deletion with a status message.
+
+    ### 6. Implement Simple Authentication & Authorization:
+
+        Up to now, anyone could request and edit data, which isn't ideal. We will now implement a basic authentication process to verify each request, ensuring it comes from a legitimate user.
+        
+        > REST APIs are designed to be stateless. This means each request is independent, carrying all necessary information for its completion. This design contrasts with session-based authentication, which you've learned about earlier. In RESTful services, session-based authentication is not typically used because it contradicts the stateless nature of REST.
+
+        **Different Authentication Methods for Different Projects:**
+        You've explored session-based authentication and cookie-based authentication. Now, you're learning about a different method: JWT authentication. Depending on the project's requirements, you might need to use any of these methods. However, remember that in REST APIs, JWT (JSON Web Tokens) is the preferred method of authentication. While session-based authentication is possible, it doesn't align with REST principles.
+
+        **Introduction to JWT:**
+        You're already familiar with cookies and HTTP-only cookies. JWT, or JSON Web Tokens, are a bit different. They are strings created by the backend (that's you!) and are typically stored in cookies by frontend developers. Your role is to generate this token and send it to the client. The frontend engineers handle the rest.
+
+        **How JWT Works:**
+        When a user logs in, you create a token using a `jwt` function. This token is then sent to the client. However, there's more to it. You also need to write middleware for your application.
+
+        **Middleware in JWT:**
+        The middleware's role is to secure your routes. It checks if a token is present in the request headers. If there's a valid token, the user is granted access to the requested resources. This might sound like you need to add an extra parameter to every route for token checking, but that's not the case. The token is sent in the header of the request, allowing you to handle authentication separately without modifying each route.
+
+        This approach ensures that your REST API remains stateless, adhering to the principles of REST, while providing secure access to resources.
+
+        **An important question arises: Does every route require an additional parameter for authentication checks? The answer is no. The token will be sent in the request header, which we can read separately. This means there's no need to modify every route with a new parameter for authentication purposes.**
+
+        > "pretty good! huh?"
+
+        1. **Creating JWT:** Create new route name `/api/auth`.After user authentication (usually in the login route), use a JWT library to generate a token. In Node.js, you can use `jsonwebtoken` to create a JWT like this: `const token = jwt.sign({ userId: user.id }, 'secretKey');`. Make sure to replace `'secretKey'` with your actual secret key.
+
+        2. **Setting Up Middleware for JWT Verification:** Create a middleware function that checks for a JWT in the request header. In this middleware, use the `jsonwebtoken` library to verify the token. If the token is valid, allow the request to proceed; otherwise, return an error. For example: 
+        ```javascript
+            const jwt = require('jsonwebtoken');
+
+            function authenticateToken(req, res, next) {
+                const token = req.headers['authorization']?.split(' ')[1]; // Extract token from header
+                if (token == null) return res.sendStatus(401); // If no token, send unauthorized error
+
+                jwt.verify(token, 'secretKey', (err, user) => {
+                if (err) return res.sendStatus(403); // If token is invalid, send forbidden error
+                req.user = user;
+                next(); // Proceed to the next middleware/route handler
+                });
+            }
+        ```
+        *Attach this middleware to routes that require authentication.*
+
+    ### 7. RBAC - Role Based Access Control
+        In web development, RBAC (Role-Based Access Control) is a method for regulating access to website or application resources based on the roles assigned to users. It helps to control what different users can see or do on a site or app.
+        In a bookstore website using RBAC:
+
+        **User (who buys books)**: This role can browse books, read descriptions, add books to their cart, and make purchases. They cannot access inventory management or view other users' order histories.
+
+        **Store Owner**: This role has access to all features. They can manage inventory, view all orders, set prices, and also perform actions that a regular user can, like browsing books and making purchases. The store owner role has complete control over the website's functionalities.
+
+
+        Download [this file](https://github.com/mesilicon7). It's MySQL Schema. Run this query in your MySQL Workbench.What this schema do: Schema will create new role, and some user with this. So you can follow this tutorial.
+
+        Actually you need to do something like that:(below)
+
+        ```javascript
+        app.get('/some-admin-route', (req, res) => {
+            if (req.user.role === 'storeowner1') {
+                res.send('Access granted');
+            } else {
+                res.send('Access denied');
+            }
+        });
+        ```
+        *it's actually psudo code*
+        
+        Good luck with your project!
+
+        ### For Customers:
+        Lock-down all this route so only `customer & store owner` can access this route.
+
+        1. **GET Requests:**
+        - `/api/books`: View all books.
+        - `/api/books/{book_id}`: View a specific book by ID.
+        - `/api/authors`: View all authors.
+        - `/api/authors/{author_id}`: View a specific author by ID.
+        - `/api/categories`: View all categories.
+        - `/api/categories/{category_id}`: View a specific category by ID.
+        - `/api/users/{user_id}`: View a specific user (themselves) by ID.
+        - `/api/orders/{order_id}`: View a specific order by ID.
+
+        2. **POST Requests:**
+        - `/api/users`: Register as a new user.
+        - `/api/orders`: Place a new order.
+
+        3. **PUT/PATCH Requests:**
+        - `/api/users/{user_id}`: Update their user details.
+
+        4. **DELETE Requests:**
+        - No access.
+
+        ### For Store Owners:
+        Lock-down all this route so only store owner can access this route.
+
+        1. **GET Requests:** Access to all customer routes plus:
+        - `/api/users`: View all users.
+        - `/api/orders`: View all orders.
+
+        2. **POST Requests:** Access to all customer routes plus:
+        - `/api/books`: Add a new book.
+        - `/api/authors`: Add a new author.
+        - `/api/categories`: Add a new category.
+
+        3. **PUT/PATCH Requests:** Access to all customer routes plus:
+        - `/api/books/{book_id}`: Update book details.
+        - `/api/authors/{author_id}`: Update author details.
+        - `/api/categories/{category_id}`: Update category details.
+        - `/api/orders/{order_id}`: Update order details.
+
+        4. **DELETE Requests:** 
+        - `/api/books/{book_id}`: Delete a book.
+        - `/api/authors/{author_id}`: Delete an author.
+        - `/api/categories/{category_id}`: Delete a category.
+        - `/api/users/{user_id}`: Delete a user.
+        - `/api/orders/{order_id}`: Delete an order.
+
+        
+        ### Something you need to know(Don't skip):
+
+        we apply RBAC logic in backend and db used for store role data. but you can also apply RBAC logic in db. so you don't need backend logic. but its easy to apply RBAC logic in backend. postgress has RLS(Row Level Security) Policy. so you can apply RBAC logic in db. in mysql its not available. so you learn a generics way to apply RBAC logic in backend. so you can apply RBAC logic in any sql & nosql db.
+
+        with [PostgRest](https://postgrest.org/en/stable/) you can develop restapi in postgres no backend needed. this extension for postgress offer auto rest api based on or table. But you thinking why i need backend?  you don't need to develop backend for all application. if you need restapi with RBAC ? you can use postgrest. but if you need more than restapi? you need backend.
+
+        There are popular backend as a service: supabase(built top of PostgRest), firebase, appwirte, aws amplify
+        
+
+    ### 8. API Version Management
+        API versioning in REST APIs is a critical strategy for maintaining backward compatibility while allowing for the evolution and improvement of the API. Here's a brief overview in five lines, along with an example of routing:
+
+        1. **Versioning Strategy:** REST APIs often use versioning to manage changes, ensuring clients can continue using older versions while new features are added.
+        2. **URI Versioning:** One common method involves including the version number in the URI, like `/v1/resource`.
+        3. **Header Versioning:** Alternatively, versioning can be handled via headers, where the version is specified in a custom header like `Accept-version: v1`.
+        4. **Query Parameter:** Another method is to use query parameters, e.g., `/resource?version=1`.
+
+        **Routing Example:** In a routing system, different versions are directed to specific handlers, like `GET /v1/resource` routes to a different handler than `GET /v2/resource`.
+
+        This approach allows API developers to introduce new features or changes without breaking existing client integrations.
+
+        **Versioning in Your eBook Store:** You can implement versioning in your eBook store's RESTful API by adding a version number to the URI. For example, you can have `/api/v1/books` and `/api/v2/books` endpoints. This way, you can add new features to the `/api/v2/books` endpoint while maintaining backward compatibility with the `/api/v1/books` endpoint.
+
+        we still save password in our database directly which is not good. we need to hash password before saving.
+
+
+        ### Example for Clarity
+
+        - **Registration**: 
+            - User's password: `"mypassword"`
+            - bcrypt generates a hash: `"$2b$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy"` (contains both the hashed password and the salt)
+
+        - **Login**:
+            - User enters `"mypassword"` again.
+            - The application retrieves `"$2b$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy"` from the database.
+            - bcrypt extracts the salt from this string and hashes `"mypassword"` with it.
+            - If the new hash matches the stored hash, the login is successful.
+
+        you don't need to save salt separately.its with string. bcrypt extract salt from string. bcrypt is one way hashing algorithm. you can't decrypt it. bcrypt is slow. so its hard to brute force. bcrypt is best for password hashing.
+
+        This process ensures each password is hashed with a unique salt, enhancing security by making it more difficult for attackers to use pre-computed hash databases (rainbow tables) to crack passwords.
+
+        **Challange:** Now change your code to save login password in hashed format. also change login logic to check password with hashed password. 
+
+
+    ### 9. Implement Refresh Token
+
+    A refresh token is a special kind of token used in token-based authentication that allows an application to obtain a new access token without requiring the user to be present. Unlike access tokens, which are short-lived and used to access resources, a refresh token has a longer lifespan and is used solely to acquire a new access token. This mechanism enhances security by limiting the lifespan of access tokens and reducing the need for repeated user authentication. Refresh tokens are commonly used in OAuth 2.0, an authorization framework for secure access delegation.
+
+    First: We Need to update our database users table to store refresh token & its expire time.Run this query in your MySQL Workbench.
+
+   ```sql
+    ALTER TABLE Users
+    ADD COLUMN refresh_token VARCHAR(255),
+    ADD COLUMN token_expires DATETIME;
+    ```
+    Second: When user login you need to create new token allongside with access token & save refresh token in database.
+
+    Psudo code example:
+    ```javascript
+        const generateAccessToken = (user) => {
+        return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' });
+        };
+
+        const generateRefreshToken = (user) => {
+        return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET);
+        };
+    ```
+    here refresh token don't need to be expire in token generation time. because we will check it in database.when you save refersh token in database you need to save expire time also. Just generete 7 days expire time for refresh token with `new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)`.
+
+    Third: When user request for new access token you need to check if refresh token is valid or not. **if valid then generate new access token & refresh token send it to user. also update refresh token in database**. if not valid then send error to user.
+
+    1.  
+    2. create new route `/api/refresh-token` for refresh token exchange.
+    
+
+
+
+    {/* 
+        now when user login we only give access token but its not enough. we need to give refresh token. so when access token expire we can use refresh token to get new access token. user don't need to login again.
+    */}
+    
+    ### 10. Password Reset Mechanism
+        {/* Necessary Update for MYSQL Database */}
+        {/* send test mail then apply real one, give them OTP */}
+        {/* resend / mailgun */}
+        {/* 
+            passowrd reset table, route
+         */}
+
+    ### 11. Refactoring to Environment Varaible, File Permission, Multiple in same project
+
+    {/* 
+        Why environment variable?
+        1. Security
+        2. Easy to change
+        3. Easy to maintain
+        4. Easy to deploy
+        5. Easy to test
+        6. Easy to share
+        7. Easy to collaborate
+        8. Easy to scale
+        9. Easy to debug
+        10. Easy to manage
+        11. Easy to configure
+        12. Easy to use
+        13. Easy to develop
+
+        how to use it
+
+        where to use it
+
+     */}
+
+    ### 12. Genereting YAML File for Frontend Developer
+
+    {/* 
+        what is swagger?
+        why need this?
+        how to use it?
+        how to generate yaml file?
+        how to generate code from yaml file?
+     */}
+
+    ### 13. Create Account with Google (OpenID Connect)
+
+
+    OpenID Connect is an authentication layer on top of OAuth 2.0, an authorization framework. The standard is controlled by the OpenID Foundation.
+
+    OpenID Connect performs authentication (and optionally authorization) by using standard HTTP-based protocols such as OAuth 2.0. OpenID Connect specifies a RESTful HTTP API, using JSON as a data format.
+    so passowrd can be null
+    {/* 
+        new table for google auth & setup
+     */}
+    {/* see its part of RestAPI or Not */}
+
+     {/* Animation  */}
+    ### 14. Create Account with Github OAuth 2.0
+
+    after changing username in github, it will not change in your database. so you need to update it. you can do it by checking email. if email is same then update username. if email is not same then create new account.
+    {/* see its part of RestAPI or Not */}
+
+{/*     
+    Animation 
+    You can create ebook recommendation based on their code language */}
+
+    ### 15. Make yourself as OAuth 2.0 Provider
+    {/* see its part of RestAPI or Not */}
+        1. Make others to make oppurtunity to make apps for your users
+
+        Process:
+        1. Other provider register, i create dynamic route for them with their identiy
+        2. User use this route to access them to specific thing, after that i send access token to them for accessing user data, also app developer can get refersh token by doing this
+
+    ### 16. Step up to OpenID Connect Provider
+    {/* see its part of RestAPI or Not */}
+
+    {/* Give Other Provier Unique app */}
+
+    ### 17. Online Payment for user
+
+    ### 18. Security
+        1. SQL Injection
+            {/* 
+                safe request from sql injection
+             */}
+            {/* 
+                use ORM
+                use prepared statement
+                use stored procedure
+                use parameterized query
+                use whitelist input validation
+                use blacklist input validation
+                use escape all user input
+                use least privilege
+                use input validation
+                use output encoding
+                use encryption
+                use hashing
+                use salt
+                use bcrypt
+                use scrypt
+                use pbkdf2
+                use argon2
+                use ssl
+                use csrf token
+                use captcha
+                use rate limit
+                use honeypot
+                use content security policy
+                use http only cookie
+                use secure cookie
+                use same site cookie
+                use xss protection
+                use cors
+                use helmet
+                use no sql
+                use nosql injection
+                use jwt
+                use oauth
+                use openid connect
+                use saml
+                use mfa
+                use 2fa
+                use 2 step verification
+             */}
+        2. Refactoring to TypeScrpt
+            {/* All Types in Separete File.. TypeDesign */}
+            {/* 
+                create type for all request & response
+                create type for all database table
+                create type for all error
+                create type for all config
+                create type for all middleware
+                create type for all route
+                create type for all controller
+                create type for all service
+                create type for all helper
+                create type for all model
+                create type for all library
+                create type for all util
+                create type for all config
+             */}
+
+             {/* 
+             
+                write ehich response whould be which type
+                write which request whould be which type
+                write which error whould be which type
+
+              */}
+
+    ### 19. Testing & CI/CD
+        1. From YAML Gen cURL & Python based Automation Script to test
+         {/* Ignore PostMan. AD CI/CD */}
+
+         {/* 
+            I need to learn fast
+            1. Testing API
+          */}
+
+
+
+    {/* Don't think frontend way, think rest way */}
+
+     
+        {/* I don't like ORM. You can use ORM Like Prisma, TypeORM & DrizzleORM etc.
+        I Prefer make yourself boss in postgres(I like the most) or mysql. Which make yourself boss in sever-side app development. But Becareful about SQL Injection. 
+     */}
+
+{/*     
+        Rest Api myth: you found lots of place.. programmer say restapi actually they not fully rest api. Even in mid-size company. 😎 . even restapi tutorial is not full rest :lol
+    
+    You can add more feature to it @apply dynamic programming
+
+    1. use ThunderClient VS code for interection */}
+
+    {/* Talk about api versioning */}

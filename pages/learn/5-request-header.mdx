@@ -1,0 +1,212 @@
+---
+chapter: 5
+title: Request Header and Body
+shortname: Header
+slug: request-header
+description: Understanding request headers and how to manipulate them in ExpressJS.
+updatedAt: 2023-07-18T20:39:49.365Z
+---
+
+# Understanding request headers and how to manipulate them in ExpressJS.
+
+Request Header means the information that is sent **by the client to the server**. It contains the information about the client's browser, operating system, preferred language, and other information that might be useful for the server to know.
+
+#### Why do we need request headers?
+1. **Authentication**: The `Authorization` header is used to authenticate the client with the server. It contains the credentials for basic authentication. The value is the Base64 encoding of the string `username:password`.
+2. **Caching**: The `Cache-Control` header is used to specify caching directives that must be obeyed by all caching mechanisms along the request-response chain.
+3. **Content Negotiation**: The `Accept` header is used by the client to specify the types of content it can process. The `Accept-Language` header is used to specify the preferred language(s) of the client.
+4. **Cookies**: The `Cookie` header is used to send cookies from the client to the server.
+5. **Cross-Site Request Forgery (CSRF)**: The `X-Requested-With` header is used to identify Ajax requests. Commonly set to `XMLHttpRequest`.
+6. **Cross-Site Scripting (XSS)**: The `X-Content-Type-Options` header is used to prevent MIME types security risk by adding this header to the web page’s HTTP response.
+7. **Do Not Track (DNT)**: The `DNT` header indicates the user's tracking preference.
+8. **Frame Protection**: The `X-Frame-Options` header indicates whether a browser should be allowed to render a page in a `<frame>`, `<iframe>`, `<embed>`, or `<object>`.
+9. **HTTP Strict Transport Security (HSTS)**: The `Strict-Transport-Security` header is used to tell the browser to only use HTTPS when communicating with the server.
+10. **Referrer Policy**: The `Referrer-Policy` header is used to control how much referrer information (sent via the `Referer` header) should be included with requests.
+11. **User-Agent**: The `User-Agent` header contains information about the client's browser and operating system.
+
+
+#### This is how request header look like:
+
+```ascii showLineNumbers copy
+GET /protected/resource HTTP/1.1
+Host: www.example.com
+Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: https://www.google.com/
+Cookie: PHPSESSID=r2t5uvjq435r4q7ib3vtdjq120; _ga=GA1.2.123456789.0123456789
+Connection: keep-alive
+Content-Length: 0
+Content-Type: application/x-www-form-urlencoded
+DNT: 1
+Upgrade-Insecure-Requests: 1
+Cache-Control: max-age=0
+X-Requested-With: XMLHttpRequest
+X-Forwarded-For: 203.0.113.195
+X-Frame-Options: deny
+X-Content-Type-Options: nosniff
+```
+
+In this header:
+
+- **Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=**: Contains the credentials for basic authentication. The value is the Base64 encoding of the string `username:password`.
+- **User-Agent**: Information about the client's browser and operating system.
+- **Accept**: Types of content the client can process.
+- **Accept-Language**: Preferred language(s) of the client.
+- **Accept-Encoding**: Encoding formats supported by the client.
+- **Referer**: The previous web page from which a link to the current request was followed.
+- **Cookie**: Cookies sent from the client to the server.
+- **Connection**: Options for the connection.
+- **Content-Length**: The length of the request body (in bytes).
+- **Content-Type**: The MIME type of the body of the request.
+- **DNT (Do Not Track)**: Indicates the user's tracking preference.
+- **Upgrade-Insecure-Requests**: Requests the use of HTTPS instead of HTTP.
+- **Cache-Control**: Directives for caching.
+- **X-Requested-With**: Identifies Ajax requests. Commonly set to `XMLHttpRequest`.
+- **X-Forwarded-For**: Identifies the originating IP address of a client connecting through a proxy or load balancer.
+- **X-Frame-Options**: Indicates whether a browser should be allowed to render a page in a `<frame>`, `<iframe>`, `<embed>`, or `<object>`.
+- **X-Content-Type-Options**: Prevents MIME types security risk by adding this header to the web page’s HTTP response.
+
+This example includes a mix of standard and non-standard (X-prefixed) headers, providing a comprehensive view of the kind of data that might be included in a typical HTTP request. Remember, the exact headers used can vary greatly depending on the specific requirements of the web application and the client's browser.
+
+## Request Header Challenge
+
+#### Challenge 1: Echo Request Headers
+Create an ExpressJS application that reads the request headers and responds with an HTML page displaying these headers.
+<details>
+  <summary> Solution </summary>
+  <p>Todo: Add Solution</p>
+</details>
+
+#### Challenge 2: Content-Type Checker
+Write a script that checks the `Content-Type` of incoming requests. If it's `application/json`, proceed; otherwise, return an error message in JSON format.
+<details>
+  <summary> Solution </summary>
+  <p>Todo: Add Solution</p>
+</details>
+
+#### Challenge 3: Language Detector
+Write a route that detects the `Accept-Language` header from the request and returns a response saying "Hello" in the detected language (just handle Arabic and Japanese for simplicity).
+<details>
+  <summary> Solution </summary>
+  <p>Todo: Add Solution</p>
+</details>
+
+#### Challenge 4: User-Agent Analytics
+Create a route that analyzes the `User-Agent` header and responds with an HTML page describing the browser type (e.g., Chrome, Firefox) and the operating system (e.g., Windows, macOS) of the client.
+<details>
+  <summary> Solution </summary>
+  <p>Todo: Add Solution</p>
+</details>
+
+## Request Body Challenge
+
+### This is how request body look like:
+
+#### Request Line
+```ascii showLineNumbers copy
+POST /login HTTP/1.1
+```
+- **POST**: The HTTP method used for the request.
+- **/login**: The path on the server to which the request is sent.
+- **HTTP/1.1**: The version of the HTTP protocol being used.
+
+#### Request Headers
+```ascii showLineNumbers copy
+Host: www.examplewebsite.com
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 27
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/70.0.3538.77 Safari/537.36
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Cookie: sessionId=abc123
+```
+- **Host**: The domain name of the server.
+- **Content-Type**: The media type of the request body.
+- **Content-Length**: The length of the request body in bytes.
+- **User-Agent**: Information about the client's browser and operating system.
+- **Accept**: Types of responses that the client will accept.
+- **Accept-Language**: Preferred languages for the response.
+- **Accept-Encoding**: Acceptable compression formats for the response.
+- **Connection**: Whether to keep the connection open after the transaction.
+- **Cookie**: Cookies sent from the client to the server.
+
+#### Separator
+A blank line is used to separate the headers from the body.
+```ascii showLineNumbers copy
+(blank line)
+```
+
+#### Request Body
+```ascii showLineNumbers copy
+username=johndoe&password=12345
+```
+- The body contains the data being sent in a `key=value` pair format.
+- Since this is a `POST` request and the `Content-Type` is `application/x-www-form-urlencoded`, the body contains form data in a URL-encoded format.
+- The `&` character is used to separate different data fields.
+
+import { Callout } from 'nextra/components'
+
+<Callout type="info" emoji="ℹ️">
+  All the information is transmitted from the client to the server in a single request. Although they are contained within the same file, for clarity, I'll explain them separately.
+</Callout>
+
+#### Challenge 1: JSON Body Parser
+Create an ExpressJS route that accepts JSON data in the request body. The route should parse the JSON and display its contents in an HTML response.
+<details>
+  <summary> Solution </summary>
+  
+    ```js copy showLineNumbers
+        const express = require('express');
+        const bodyParser = require('body-parser');
+
+        const app = express();
+
+        // Use body-parser middleware to parse JSON bodies
+        app.use(bodyParser.json());
+
+        // Route that handles POST requests
+        app.post('/parse-json', (req, res) => {
+            const requestBody = req.body;
+            
+            // Create a simple HTML to display the JSON content
+            let htmlResponse = '<h1>Received JSON Data</h1><pre>' + JSON.stringify(requestBody, null, 4) + '</pre>';
+
+            res.send(htmlResponse);
+        });
+
+        const PORT = 3000;
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
+        });
+    ```
+    <p>Test using cURL or any API cleint</p>
+    ```bash copy showLineNumbers
+        curl -X POST http://localhost:3000/parse-json -H "Content-Type: application/json" -d '{"name": "서빈", "hobby": "coding"}'
+    ```
+</details>
+
+#### Challenge 2: URL-Encoded Form Data
+Build an endpoint that handles URL-encoded form data (like from an HTML form). Extract and log the form data to the console.
+<details>
+  <summary> Solution </summary>
+  <p>Todo: Add Solution</p>
+</details>
+
+#### Challenge 3: Text Echo
+Set up a route that receives plain text in the request body and responds with the same text in uppercase.
+<details>
+  <summary> Solution </summary>
+  <p>Todo: Add Solution</p>
+</details>
+
+#### Challenge 4: Body Length Checker
+Implement a middleware that checks the length of the request body. If the body is longer than a specified threshold (e.g., 100 characters), respond with an error; otherwise, proceed with the request.
+<details>
+  <summary> Solution </summary>
+  <p>Todo: Add Solution</p>
+</details>

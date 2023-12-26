@@ -1,0 +1,51 @@
+{
+    "level-1": {
+      "type": "separator",
+      "title": "レベル - 一 (Level 1)"
+    },
+    "0-intro": "Intro (零)",
+    "1-simple-webserver": "Simple Web Server (一)",
+    "2-simple-routing": "Simple Routing (二)",
+    "3-dynamic-route": "Dynamic Routing (三)",
+    "4-ejs-and-fetch-data": "EJS and Fetch Data (四)",
+    "5-request-header": "Request Header (五)",
+    "6-set-read-cookies": "Set and Read Cookie (六)",
+    "7-middleware-and-custom-middleware": "Middlewares (七)",
+    "8-route-redirections": "Route Redirections (八)",
+    "9-handle-query-parameters": "Handle Query Parameters (九)",
+    "10-simple-api-request": "Simple Api (十)",
+    "11-file-upload-mutler": "File Upload (十一)",
+    "12-server-static-files": "Server Static Files (十二)",
+    "13-use-environment-variables": "Use Environment Variables (十三)",
+    "level-2": {
+      "type": "separator",
+      "title": " レベル - 二 (Level 2)"
+    },
+    "14-manage-sessions": "Simple Auth & Manage Sessions 🗃️",
+    "15-mysql-database": "MySQL Database 📚",
+    "16-authentications-authorizations": "Authentications and Authorizations 🔒",
+    "level-3": {
+      "type": "separator",
+      "title": "深い洞察 (A Deep Dive)"
+    },
+    "17-rest-api": "REST API",
+    "18-cors": "CORS 🏗️",
+    "19-rate-limiting": "Rate Limiting 🏗️",
+    "20-log-request": "Log Request 🏗️",
+    "21-implement-caching": "Implementing Caching 🏗️",
+    "22-conditional-routing": "Conditional Routing 🏗️",
+    "23-compress-http-response": "Compress HTTP Response 🏗️",
+    "24-multi-lang": "Multi Language 🏗️",
+    "25-security-practice": "Security Practices 🏗️",
+    "26-graphql": "GraphQL 🏗️",
+    "27-sse": "Server Sent Events 🏗️",
+    "28-websockets": "WebSocket 🏗️",
+    "29-custom-error-pages": "Custom Error Handling 🏗️",
+    "30-search-feature": "Search Feature 🏗️",
+    "31-email-intrigation": "Email Integration 🏗️",
+    "32-express-docker": "Express Docker 🏗️",
+    "33-create-custom-logger": "Create Custom Package 🏗️",
+    "34-memory-leak-test": "Memory Leak Testing 🏗️",
+    "35-code-testing": "Code Testing 🏗️",
+    "36-ci-cd": "CI/CD 🏗️"
+  }

@@ -1,0 +1,118 @@
+---
+chapter: 4
+title: Fetch Data
+shortname: API Call
+slug: fetch-data
+description: EJS & Fetch Data
+updatedAt: 2023-07-18T20:39:49.365Z
+---
+
+# EJS - Template Engine
+<hr/>
+**Preface:** EJS, which stands for Embedded JavaScript templating, is a simple templating language used to generate HTML markup with plain JavaScript. It allows you to create HTML pages with dynamic content by embedding JavaScript code within the HTML structure. EJS is commonly used with Node.js to build server-side rendered web applications, making it easy to pass data from the server to the template for rendering.
+
+```sh npm2yarn copy
+npm i ejs
+```
+
+## Rethinking Server-Side: Why Modern Backend Developers Can Skip Learning Templating Engines
+
+1. **Client-Side Rendering**: Modern apps use frameworks like React for client-side rendering, making server-side templating engines like EJS less relevant.
+2. **Component-Based UI**: React's component-based architecture allows for more modular and maintainable code, reducing the need for traditional templating.
+3. **JavaScript Ecosystem**: React, along with REST/GraphQL backends, promotes a JavaScript-centric ecosystem, where frontend and backend can seamlessly interact.
+4. **Single Page Applications (SPAs)**: React is often used for SPAs, where the page doesn't reload, and UI updates are handled entirely by JavaScript, negating templating engines.
+
+import { Callout } from 'nextra/components'
+ 
+<Callout type="warning" emoji="⚠️">
+  You can skip this chapter(EJS Template not Data Fetching) if you are using React or other modern frontend frameworks or you just **develop backend only**
+</Callout>
+ 
+<Callout type="info" emoji="ℹ️">
+  For small projects, you can use EJS or other templating engines. But for large projects, you should use React or other modern frontend frameworks. I recommend you to learn EJS. Because you can find many projects & company that use EJS. Also you maybe only developer in company so its your job to develop frontend & backend.
+</Callout>
+
+## EJS Challenges
+<hr/>
+#### Challenge 1: Print "Hello World" from JavaScript to EJS
+Create an EJS template that displays "Hello World" using a variable passed from a JavaScript file.
+<details>
+  <summary> Solution </summary>
+  <p>Todo: Add Solution</p>
+</details>
+
+
+#### Challenge 2: Loop through an Array
+Pass an array of numbers from your JavaScript file to the EJS template. Display each number in a list.
+<details>
+  <summary> Solution </summary>
+  <p>Todo: Add Solution</p>
+</details>
+
+#### Challenge 3: Conditional Rendering
+Pass a boolean value from JavaScript to the EJS template. Use this value to conditionally display a message on the webpage.
+
+<details>
+  <summary> Solution </summary>
+  <p>Todo: Add Solution</p>
+</details>
+
+#### Challenge 4: Include a Partial
+Create a partial EJS template (like a header or footer). Include it in your main EJS template.
+<details>
+  <summary> Solution </summary>
+  <p>Todo: Add Solution</p>
+</details>
+
+#### Challenge 5: Display Object Properties
+Pass an object from JavaScript to your EJS template. Display each property of the object in a structured format.
+<details>
+  <summary> Solution </summary>
+  <p>Todo: Add Solution</p>
+</details>
+
+#### Challenge 6: Nested Loops
+Pass a nested array (array of arrays) from JavaScript to EJS. Use nested loops in EJS to display the contents of this structure.
+<details>
+  <summary> Solution </summary>
+  <p>Todo: Add Solution</p>
+</details>
+
+#### Challenge 7: Use EJS Tags to Create a Table
+Create a table in EJS using `<% %>` tags, where each row is generated dynamically based on an array of objects passed from JavaScript.
+<details>
+  <summary> Solution </summary>
+  <p>Todo: Add Solution</p>
+</details>
+
+
+#### Challenge 8: Interactive List
+Pass an array of strings from JavaScript to EJS. Allow the user to select an item from the list and display the selected item on the page.
+<details>
+  <summary> Solution </summary>
+  <p>Todo: Add Solution</p>
+</details>
+
+#### Challenge 9: Template Inheritance
+Use EJS's layout feature to create a base layout. Extend this layout in another EJS file to include specific content.
+<details>
+  <summary> Solution </summary>
+  <p>Todo: Add Solution</p>
+</details>
+
+
+## Data Fetching
+
+#### Challenge 1: Data Fetching
+Fetch data from https://jsonplaceholder.typicode.com/posts & return all post with formated html.
+<details>
+  <summary> Solution </summary>
+  <p>Todo: Add Solution</p>
+</details>
+
+#### Challenge 2: Data Fetching & EJS
+Fetch data from https://jsonplaceholder.typicode.com/posts & return all post with formated html.(Use EJS)
+<details>
+  <summary> Solution </summary>
+  <p>Todo: Add Solution</p>
+</details>

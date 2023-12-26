@@ -1,0 +1,56 @@
+---
+chapter: 9
+title: Handle Query Parameters
+shortname: Query Param
+slug: handle-query-parameters
+description: Handle Query Parameters in GET Requests
+updatedAt: 2023-07-18T20:39:49.365Z
+---
+
+# Handle Query Parameters
+
+#### Challenge 1: Handle Query Parameters in GET Requests
+Create an ExpressJS route that handles GET requests with specific query parameters. 
+
+1. Set up a route (e.g., `/get-params`) that can handle a GET request in the following format: `127.0.0.1:3000/get-params?motto='ditto'&username='can not sleep glow up'`.
+2. Write a handler for this route that extracts the `motto` and `username` query parameters from the request.
+3. Respond to the request by sending an HTML response. The HTML should display the key-value pairs of the received query parameters in a formatted manner. For example, it could show something like `<p>Motto: ditto</p><p>Username: can not sleep glow up</p>`.
+
+    <details>
+        <summary> Solution </summary>
+        <p>Todo: Add Solution</p>
+    </details>
+{/* Handle Query Paramter on Post Request */}
+
+#### Challenge 2: Handle POST Request with Body Parameters
+import { Callout } from 'nextra/components'
+ 
+<Callout type="info" emoji="⚠️">
+  Request Header contain browser information.
+  Request Body contain POST request data.
+</Callout>
+
+Create an ExpressJS route that handles POST requests with body parameters.
+
+1. Set up a route (e.g., `/post-data`) that can handle POST requests.
+2. The POST request should expect body parameters `motto` and `username`.
+3. Write a handler for this route that extracts the `motto` and `username` from the request body.
+4. Respond to the request by sending a JSON response containing the received `motto` and `username`.
+
+To test this POST request, you can use `curl`. Here's the curl command you can use:
+
+```bash showLineNumbers copy
+curl -X POST http://127.0.0.1:3000/post-data \
+     -H 'Content-Type: application/json' \
+     -d '{"motto": "ditto", "username": "can not sleep glow up"}'
+``` 
+
+This `curl` command sends a POST request to `http://127.0.0.1:3000/post-data` with a JSON body containing the `motto` and `username` fields. The `-H 'Content-Type: application/json'` part of the command specifies that the data being sent is in JSON format.
+
+    <details>
+        <summary> Solution </summary>
+        <p>Todo: Add Solution</p>
+    </details>
+{/* 
+    Request Header , Body , Data Explain
+*/}

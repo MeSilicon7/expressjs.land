@@ -1,0 +1,17 @@
+{   
+    "index": {
+      "title": "Home",
+      "type": "page",
+      "theme": {
+        "layout": "full"
+      }
+    },
+    "learn": {
+      "title": "Learn",
+      "type": "page",
+      "theme":{
+        "layout": "default",
+        "typesetting": "article"
+      }
+    }
+  }

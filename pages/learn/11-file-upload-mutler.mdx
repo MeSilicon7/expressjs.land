@@ -1,0 +1,108 @@
+---
+chapter: 11
+title: File upload with Mutler
+shortname: Upload
+slug: file-upload-with-multer
+description: File upload with Mutler
+updatedAt: 2023-07-18T20:39:49.365Z
+---
+
+# File upload with Mutler
+
+#### Challenge 1: File Uploads with Multer
+
+- **Objective**: Implement a file upload system in an ExpressJS application using Multer.
+
+- **Tasks**:
+  1. **Create an HTML Form**:
+     - Design a simple HTML form for file uploading.
+     - The form should send a POST request to `127.0.0.1:3000/file`.
+
+  2. **Set Up Express Server**:
+     - Initialize an ExpressJS server that listens on port 3000.
+
+  3. **Integrate Multer for File Handling**:
+     - Install and set up Multer in your Express application.
+     - Configure Multer to handle file uploads from the form.
+     - When a file is uploaded, rename it and save it to a specified directory on your server.
+
+- **Goal**: Users should be able to upload a file through the HTML form, and your Express server, with the help of Multer, should handle the file upload, renaming, and saving process.
+
+<details>
+    <summary> Solution </summary>
+
+    #### Step 1: Create an HTML Form
+
+    First, you'll need an HTML page with a form for file uploading. Here's a simple example:
+
+    ```html {highlight=6,7,8,9,10} showLineNumbers copy
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>File Upload Form</title>
+    </head>
+    <body>
+        <form action="http://127.0.0.1:3000/file" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" />
+            <button type="submit">Upload File</button>
+        </form>
+    </body>
+    </html>
+    ```
+
+    #### Step 2: Set Up Express Server
+
+    Now, let's set up an Express server. If you haven't already, install Express and Multer:
+
+    ```sh npm2yarn copy
+    npm install express multer
+    ```
+
+    Then, create a server file (e.g., `server.js`):
+
+    ```js showLineNumbers copy
+    const express = require('express');
+    const multer = require('multer');
+    const app = express();
+    const port = 3000;
+
+    // Multer configuration
+    const storage = multer.diskStorage({
+        destination: function(req, file, cb) {
+            cb(null, 'uploads/');
+        },
+        filename: function(req, file, cb) {
+            const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+            cb(null, file.fieldname + '-' + uniqueSuffix);
+        }
+    });
+
+    const upload = multer({ storage: storage });
+
+    // Route for file upload
+    app.post('/file', upload.single('file'), (req, res) => {
+        res.send('File uploaded successfully!');
+    });
+
+    // Start server
+    app.listen(port, () => {
+        console.log(`Server is running at http://localhost:${port}`);
+    });
+    ```
+
+    #### Step 3: Running the Server and Testing
+
+    1. **Run Your Server**: Execute your server script with Node.js:
+
+    ```bash showLineNumbers copy
+    node server.js
+    ```
+
+    2. **Test the File Upload**:
+    - Open the HTML file you created in a browser.
+    - Choose a file and submit the form.
+    - If everything is set up correctly, you should see a message indicating successful upload, and the file should be in the `uploads/` directory on your server with a new name.
+
+    This setup allows users to upload files to your Express server, where Multer handles the file uploading, renaming, and saving process.
+
+</details>
